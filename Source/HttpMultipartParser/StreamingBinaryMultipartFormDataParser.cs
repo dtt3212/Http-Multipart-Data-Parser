@@ -410,6 +410,11 @@ namespace HttpMultipartParser
 		/// </returns>
 		private int CalculateNewlineLength(ref byte[] data, int offset)
 		{
+			if (offset < 0)
+			{
+				return 0;
+			}
+
 			byte[][] newlinePatterns = { Encoding.GetBytes("\r\n"), Encoding.GetBytes("\n") };
 
 			// Go through each pattern and find which one matches.
